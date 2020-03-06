@@ -1,10 +1,12 @@
 import { combineReducers } from 'redux';
-import { FETCH_PAINTINGS, SELECT_ACTIVE_PAINTING } from './actions/types';
+import { FETCH_PAINTINGS, SELECT_ACTIVE_PAINTING, DELETE_PAINTING } from './actions/types';
 
 const paintingsReducer = (state = [], action) => {
   switch (action.type) {
     case FETCH_PAINTINGS:
       return [...action.payload];
+    case DELETE_PAINTING:
+      return state.filter(painting => painting.id !== action.painting)
     default:
       return state;
   }
